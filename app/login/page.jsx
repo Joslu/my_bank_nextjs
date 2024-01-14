@@ -3,25 +3,33 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import makeApiRequest from "../utils/api";
+import Spinner from "@/components/spinner";
 
 function Login() {
   const router = useRouter();
 
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showAlertWrongCredentials, setShowAlertWrongCredentials] = useState(false);
 
   
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    try {
+    setLoading(true);
+   
+   setTimeout( async()=>{ try {
       const responseData = await makeApiRequest('/login', 'POST', { user_email, user_password });
       console.log(responseData);
 
       router.push('/dashboard');
     } catch (error) {
       console.error('Error en la operación:', error);
-    }
+      setShowAlertWrongCredentials(true)
+    } finally{
+      setLoading(false);
+    }},2000)
   };
 
 
@@ -67,8 +75,9 @@ function Login() {
           type="submit"
           className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={handleLogin}
+          disabled={loading}
         >
-          Sign In
+          {loading ? <Spinner /> : 'Sign In'}
         </button>
       </form>
       <div className="text-sm text-gray-500 text-center mt-6">
@@ -77,7 +86,11 @@ function Login() {
           <Link href="/register" className="text-indigo-500 hover:underline">
             Sign Up
           </Link>
-        </p>
+        </p>{showAlertWrongCredentials && (
+          <div className="fixed top-0 right-0 mt-4 mr-4 bg-red-500 text-white p-4 rounded shadow-lg">
+            <p>Wrong Credentials</p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,25 @@
-
+"use client";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from 'react';
+import makeApiRequest from "@/app/utils/api";
 function BankPage({ params }) {
   console.log(params);
+  const router = useRouter();
+  
+  const handleLogout = async () => {
+    try {
+      await makeApiRequest('/logout', 'POST');
+      router.push('/login');
+    } catch (error) {
+      console.error('Error en el cierre de sesión:', error);
+    }}
 
   return (
     <div className="relative h-screen flex flex-col ">
       <div className="flex justify-between items-center px-4 py-4 bg-indigo-50">
         <h1 className="text-4xl font-bold text-indigo-900">Bank App</h1>
         <div></div>
-        <button className="bg-indigo-600 text-white font-bold px-4 py-2 rounded">
+        <button onClick={handleLogout} className="bg-indigo-600 text-white font-bold px-4 py-2 rounded">
           Log Out
         </button>
       </div>
