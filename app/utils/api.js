@@ -1,7 +1,6 @@
 // utils/api.js
 const BASE_URL = 'http://127.0.0.1:5000';  // Cambia esto según el puerto en el que se ejecute tu servidor Flask
-const PRODUCTION_URL = "https://3.136.156.168"
-
+const PRODUCTION_URL = "https://3.144.174.255"
 
 const makeApiRequest = async (endpoint, method, data) => {
   try {
