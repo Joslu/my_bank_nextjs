@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from 'react';
 import makeApiRequest from "@/app/utils/api";
 function BankPage({ params }) {
-  console.log(params);
+  console.log("parametros", params);
   const router = useRouter();
   
   const handleLogout = async () => {
@@ -50,7 +50,7 @@ function BankPage({ params }) {
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Ingresos
           </dt>
-          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
             56778
           </dd>
         </div>
@@ -58,7 +58,7 @@ function BankPage({ params }) {
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Egresos
           </dt>
-          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <dd className="mt-1 text-sm leading-6 text-red-700 sm:col-span-2 sm:mt-0">
             $120,000
           </dd>
         </div>

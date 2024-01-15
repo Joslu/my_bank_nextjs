@@ -34,7 +34,10 @@ function Login() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+   
+    
+<div className="flex flex-col items-center justify-center h-screen">
+<div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-3xl font-bold mb-12 text-indigo-100">
         Hey, welcome!
       </h1>
@@ -92,7 +95,23 @@ function Login() {
           </div>
         )}
       </div>
+    </div><div className="absolute bottom-4 left-4 text-sm text-gray-500">
+   @joslu 
+      </div>
+      <div className="fixed bottom-4 right-4">
+        <p className="text-sm text-gray-500">
+          <a href="https://github.com/Joslu/my_bank_flask" target="_blank" rel="noopener noreferrer">
+            Backend code 🐍
+          </a>
+        </p>
+        <p className="text-sm text-gray-500">
+          <a href="https://github.com/Joslu/my_bank_nextjs" target="_blank" rel="noopener noreferrer">
+            Frontend code 🎨
+          </a>
+        </p>
+      </div>
     </div>
+
   );
 }
 
