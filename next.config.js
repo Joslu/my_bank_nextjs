@@ -15,6 +15,7 @@ module.exports = {
         // Matching all routes
         source: "/:path*",
         headers: [
+          {key: "Strict-Transport-Security", value: "max-age=0"},
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "http://3.22.188.144" }, // Cambia a tu dominio de API
           { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
